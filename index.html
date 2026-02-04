@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg1:#fff1f6;
+  --bg2:#fde2ea;
+  --accent:#ff7aa2;
+  --text:#3b1f2b;
+  --glass:rgba(255,255,255,0.65);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+}
+
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px 20px;
+  animation:fadeIn 1s ease;
+}
+
+h1,h2{
+  font-family:'Playfair Display',serif;
+}
+
+h1{
+  font-size:clamp(2.2rem,5vw,3.2rem);
+  margin-bottom:10px;
+}
+
+h2{
+  font-size:clamp(1.4rem,4vw,1.9rem);
+  font-weight:500;
+}
+
+button{
+  padding:14px 34px;
+  font-size:17px;
+  border-radius:40px;
+  border:none;
+  cursor:pointer;
+  margin:12px;
+  transition:.35s ease;
+  font-weight:500;
+}
+
+.yes{
+  background:var(--accent);
+  color:white;
+  box-shadow:0 10px 25px rgba(255,122,162,.4);
+}
+
+.no{
+  background:transparent;
+  border:2px solid #ffb6c8;
+}
+
+button:hover{
+  transform:translateY(-2px) scale(1.05);
+}
+
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(14px);
+  border-radius:30px;
+  padding:30px;
+  box-shadow:0 25px 50px rgba(0,0,0,.12);
+}
+
+/* Gifts */
+.gifts{
+  display:flex;
+  flex-wrap:wrap;
+  gap:25px;
+  justify-content:center;
+}
+
+.gift{
+  width:280px;
+  cursor:pointer;
+  transition:.4s ease;
+}
+
+.gift:hover{transform:translateY(-8px)}
+
+.gift h3{
+  font-family:'Playfair Display',serif;
+}
+
+.hidden{display:none}
+
+img{
+  max-width:100%;
+  border-radius:20px;
+}
+
+/* Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:18px;
+  margin-top:25px;
+}
+
+.photo{
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+/* Floating hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:float 6s linear forwards;
+}
+
+@keyframes float{
+  from{opacity:1;transform:translateY(0)}
+  to{opacity:0;transform:translateY(-120vh)}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background music -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/Vb6wGJpc0io?autoplay=1&loop=1&playlist=Vb6wGJpc0io"
+allow="autoplay">
+</iframe>
+
+<!-- PAGE 1 -->
+<section id="p1">
+  <h1>Hey Ayantika 💖</h1>
+  <h2>Will you be my Valentine?</h2>
+  <div>
+    <button class="yes" onclick="next(1)">Yes, always 💕</button>
+    <button class="no" onclick="alert('I don’t accept no as an answer 💗')">No 🙈</button>
+  </div>
+</section>
+
+<!-- PAGE 2 -->
+<section id="p2" class="hidden">
+  <h1>Your Gifts 🎁</h1>
+
+  <div class="gifts">
+    <div class="gift glass" onclick="openGift(1)">
+      <h3>Gift One</h3>
+      <div id="g1" class="hidden">
+        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+        <img src="images/cat-love.gif">
+      </div>
+    </div>
+
+    <div class="gift glass" onclick="openGift(2)">
+      <h3>Gift Two</h3>
+      <div id="g2" class="hidden">
+        <img src="images/mrroses_pinklilies_pinkroses2.jpg">
+        <p>Lilies and pink roses — chosen just for you.</p>
+      </div>
+    </div>
+
+    <div class="gift glass" onclick="openGift(3)">
+      <h3>Gift Three</h3>
+      <div id="g3" class="hidden">
+        <p>
+          <!-- WRITE YOUR FINAL PARAGRAPH HERE -->
+          Every moment with you feels like something I never knew I was missing
+          until I found it. You’ve become my comfort, my excitement, and my
+          favorite thought all at once. Loving you feels natural, effortless,
+          and deeply real — and this is just my way of asking if I get to keep
+          choosing you, every single day.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <button class="yes" onclick="next(2)">Continue 💞</button>
+</section>
+
+<!-- PAGE 3 -->
+<section id="p3">
+  <h1>Us 💖</h1>
+
+  <div class="gallery">
+    <div class="photo"><img src="images/pic1.jpg"></div>
+    <div class="photo"><img src="images/pic2.jpg"></div>
+    <div class="photo"><img src="images/pic3.jpg"></div>
+    <div class="photo"><img src="images/pic4.jpg"></div>
+  </div>
+</section>
+
+<script>
+function next(n){
+  document.getElementById("p"+n).classList.add("hidden");
+  document.getElementById("p"+(n+1)).classList.remove("hidden");
+}
+
+function openGift(n){
+  document.getElementById("g"+n).classList.remove("hidden");
+  hearts();
+}
+
+function hearts(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.style.left=Math.random()*100+"vw";
+  h.innerText="💗";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}
+</script>
+
+</body>
+</html>
